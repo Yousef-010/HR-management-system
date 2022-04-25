@@ -9,11 +9,11 @@ function Employee( e_id,e_fullName,e_department,e_level,e_imgUrl ){
   this.department = e_department,
   this.level = e_level,
   this.imgUrl = e_imgUrl,
-   
+
   E_array.push(this)
 }
 
- 
+
 let bttn = document.getElementById('bttn')
 let form =document.getElementById('form')
 
@@ -21,7 +21,7 @@ let form =document.getElementById('form')
 function randomId(min,max){
     let random = Math.floor(Math.random()* (max-min))+min
     return random
-    
+
 }
 
 Employee.prototype.getId= function(min,max){
@@ -32,7 +32,7 @@ Employee.prototype.getId= function(min,max){
 let M_main = document.getElementById('main')
 let E_container = document.getElementById('container')
  let card = document.getElementById('card')
- 
+
 Employee.prototype.render = function () { 
 
      let image = document.createElement('img')
@@ -42,22 +42,22 @@ Employee.prototype.render = function () {
      let Id = document.createElement('h2')
      let dep = document.createElement('h3')
      let lev = document.createElement('h4')
-    
-    
+
+
     image.setAttribute('src',this.imgUrl)
     name.textContent= 'Name : '+ this.fullName
     Id.textContent= '-ID :'+ this.id
     dep.textContent= 'Deperatment: '+ this.department
     lev.textContent= 'Level : '+ this.level
-  
-    
+
+
     card.appendChild(image)
     card.appendChild(name)
     card.appendChild(Id)
     card.appendChild(dep)
     card.appendChild(lev)
-    
-    
+
+
 }
  
 function Employee(
@@ -140,7 +140,7 @@ const lina = new Employee(
   "Senior",
  
   "./images/Lana.jpg"
-  
+
 )
  
   "./assets/ch_fm_1.jpg"
@@ -153,7 +153,7 @@ const tamara = new Employee(
   "Senior",
 
   "./images/Tamara.jpg"
-  
+
 )
 
   "./assets/ch_fm_2.jpg"
@@ -196,11 +196,11 @@ const hadi = new Employee(
   "Mid-Senior",
 
   "./images/Hadi.jpg"
-  
+
 )
 
 function renderAll(){
-    
+
 for (let i = 0; i < E_array.length; i++) {
 
     E_array[i].getId(1000,9999)
