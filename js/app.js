@@ -89,60 +89,60 @@ Employee.prototype.render = function () {
 
 }
  
-const ghazi = new Employee(
-  1000,
-  "Ghazi Samer",
-  "Administration",
-  "Senior",
-  "./images/Ghazi.jpg"
+// const ghazi = new Employee(
+//   1000,
+//   "Ghazi Samer",
+//   "Administration",
+//   "Senior",
+//   "./images/Ghazi.jpg"
 
-)
+// )
 
-const lina = new Employee(
-  1001,
-  "Lana Ali",
-  "Finance",
-  "Senior",
-  "./images/Lana.jpg"
+// const lina = new Employee(
+//   1001,
+//   "Lana Ali",
+//   "Finance",
+//   "Senior",
+//   "./images/Lana.jpg"
 
-)
-const tamara = new Employee(
-  1002,
-  "Tamara Ayoub",
-  "Marketing",
-  "Senior",
-  "./images/Tamara.jpg"
+// )
+// const tamara = new Employee(
+//   1002,
+//   "Tamara Ayoub",
+//   "Marketing",
+//   "Senior",
+//   "./images/Tamara.jpg"
 
-)
-const safi = new Employee(
-  1003,
-  "Safi Walid",
-  "Administration",
-  "Mid-Senior",
-  "./images/Safi.jpg"
-)
-const omar = new Employee(
-  1004,
-  "Omar Zaid",
-  "Development",
-  "Senior",
-  "./images/Omar.jpg"
-)
-const rana = new Employee(
-  1005,
-  "Rana Saleh",
-  "Development",
-  "Junior",
-  "./images/Rana.jpg"
-)
-const hadi = new Employee(
-  1006,
-  "Hadi Ahmad",
-  "Finance",
-  "Mid-Senior",
-  "./images/Hadi.jpg"
+// )
+// const safi = new Employee(
+//   1003,
+//   "Safi Walid",
+//   "Administration",
+//   "Mid-Senior",
+//   "./images/Safi.jpg"
+// )
+// const omar = new Employee(
+//   1004,
+//   "Omar Zaid",
+//   "Development",
+//   "Senior",
+//   "./images/Omar.jpg"
+// )
+// const rana = new Employee(
+//   1005,
+//   "Rana Saleh",
+//   "Development",
+//   "Junior",
+//   "./images/Rana.jpg"
+// )
+// const hadi = new Employee(
+//   1006,
+//   "Hadi Ahmad",
+//   "Finance",
+//   "Mid-Senior",
+//   "./images/Hadi.jpg"
 
-)
+// )
 
 
 
@@ -177,5 +177,46 @@ function addsubmit (event){
     let newEmployee = new Employee(id,Name,depart,lvl,img)
     newEmployee.getsal()
     newEmployee.render()
+
+    storeData(E_array);
 // console.log(E_array);
 }
+
+
+
+
+function storeData(data) {
+  let datastored = JSON.stringify(data);
+  localStorage.setItem('All_Employees', datastored)
+
+}
+
+
+function reciveData() {
+  let dataRecived = localStorage.getItem('All_Employees');
+   console.log(dataRecived);
+  //  console.log(typeof(dataRecived));
+    
+    let allData = JSON.parse(dataRecived);
+    console.log(allData);
+
+    if (allData != null) {
+        
+        for (let i = 0; i < allData.length; i++) {
+          var element = new Employee(
+            allData[i].id,
+            allData[i].fullName,
+            allData[i].department,
+            allData[i].level,
+            allData[i].imgUrl,
+            allData[i].salary
+          );
+        }
+        element.getsal()
+        element.render()
+    
+    }
+
+}
+
+reciveData();
