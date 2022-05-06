@@ -211,9 +211,11 @@ function reciveData() {
             allData[i].imgUrl,
             allData[i].salary
           );
+
+          element.getsal()
+          element.render()
         }
-        element.getsal()
-        element.render()
+       
     
     }
 
